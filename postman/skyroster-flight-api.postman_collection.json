@@ -1,0 +1,292 @@
+{
+  "info": {
+    "name": "SkyRoster Flight API",
+    "description": "Complete API collection for SkyRoster Flight Crew Roster Management System",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/auth/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["auth", "login"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Flights",
+      "item": [
+        {
+          "name": "Get All Flights",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/flights",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["flights"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Flight by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/flights/FL001",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["flights", "FL001"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Flight",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flightNumber\": \"TK1234\",\n  \"aircraftType\": \"A350\",\n  \"departureAirport\": \"IST\",\n  \"arrivalAirport\": \"JFK\",\n  \"departureTime\": \"2025-12-28T10:00:00Z\",\n  \"arrivalTime\": \"2025-12-28T22:00:00Z\",\n  \"totalSeats\": 350\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/flights",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["flights"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Rosters",
+      "item": [
+        {
+          "name": "Get All Rosters",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/roster",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["roster"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Roster",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flightId\": \"FL001\",\n  \"crewMembers\": [\"CC001\", \"CC002\", \"CC003\"]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/roster",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["roster"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Passengers",
+      "item": [
+        {
+          "name": "Get All Passengers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/passengers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["passengers"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Passenger",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john@example.com\",\n  \"passportNumber\": \"AB123456\",\n  \"nationality\": \"US\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/passengers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["passengers"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cabin Crew",
+      "item": [
+        {
+          "name": "Get All Crew Members",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/cabincrew",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["cabincrew"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Crew Member",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Ayse\",\n  \"lastName\": \"Yilmaz\",\n  \"position\": \"flight-attendant\",\n  \"baseAirport\": \"IST\",\n  \"employeeId\": \"TK001\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/cabincrew",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["cabincrew"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["health"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

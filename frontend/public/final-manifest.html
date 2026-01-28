@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>SkyRoster AI – Final Manifest (S6)</title>
+</head>
+<body>
+    <header>
+        <h1>Flight Roster System</h1>
+    </header>
+    
+    <main class="roster-page">
+        <h2>Final Roster Manifest (Screen S6)</h2>
+
+        <div id="flight-context-header" class="card header-context">
+             <p id="context-info">Flight: --- • Aircraft: --- • Roster Status: APPROVED</p>
+               <button onclick="window.location.href='roster-builder.html'">Back to Roster Dashboard</button>
+               <button id="logout-btn" type="button">Log out</button>
+        </div>
+
+        <div class="s6-container">
+            
+            <section id="manifest-summary" class="card">
+                <h3>Flight Details & Crew Summary (FR-07)</h3>
+                
+                <div class="summary-grid">
+                    <div><strong>Flight No:</strong> <span id="s6-flight-no">N/A</span></div>
+                    <div><strong>Date/Time:</strong> <span id="s6-date-time">N/A</span></div>
+                    <div><strong>Aircraft Type:</strong> <span id="s6-aircraft">N/A</span></div>
+                    <div><strong>Total PAX:</strong> <span id="s6-pax-count">0</span></div>
+                </div>
+
+                <h4 class="crew-header">Flight Crew (Cockpit)</h4>
+                <ul id="pilot-manifest-list" class="crew-manifest-list">
+                    </ul>
+                
+                <h4 class="crew-header">Cabin Crew (Attendants)</h4>
+                <ul id="cabin-manifest-list" class="crew-manifest-list">
+                    </ul>
+            </section>
+
+            <section id="passenger-manifest" class="card">
+                <h3>Passenger Manifest (UC06)</h3>
+                <div class="manifest-controls">
+                    <button id="print-manifest-btn">Print Manifest (PDF)</button>
+                    <button id="download-manifest-btn">Download Manifest (CSV)</button>
+                </div>
+                
+                <table id="pax-manifest-table" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Seat No</th>
+                            <th>Name</th>
+                            <th>Passenger Type</th>
+                            <th>Ticket Class</th>
+                            <th>Affiliated PAX ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer-bar">
+        <p>Copyright © 2025</p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>

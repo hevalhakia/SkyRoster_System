@@ -1,0 +1,561 @@
+$primary-color: #006400;
+$font-stack: 'Arial', sans-serif;
+$error-color: #e74c3c; 
+
+// General Style
+body {
+    font-family: $font-stack;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: $primary-color;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+form {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    max-width: 350px; 
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    margin-bottom: 5px;
+    display: block; 
+    font-weight: bold;
+}
+
+form input {
+    width: 100%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; 
+}
+
+// Error Message Style (Screen S1 Status Area)
+#error-message {
+    color: $error-color; 
+    background-color: lighten($error-color, 40%); 
+    border: 1px solid $error-color;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center;
+}
+
+button {
+    padding: 10px;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: darken($primary-color, 10%);
+}
+
+/* --- SCREEN S2: FLIGHT SEARCH STYLES START --- */
+
+// Genel Kart Stili (Search Area ve Results Area için)
+.card {
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+}
+
+#search-area {
+    h3 {
+        margin-top: 0;
+        color: #34495e; // Koyu renk başlık
+    }
+}
+
+// Arama Çubuğu (Uçuş No ve Arama Butonu)
+.search-bar-main {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    #flight-number-input {
+        flex-grow: 1;
+        font-size: 16px;
+    }
+    #search-flights-btn {
+        padding: 10px 20px;
+        white-space: nowrap; 
+    }
+}
+
+// Filtre Paneli
+.filter-panel {
+    border-top: 1px solid #ecf0f1;
+    padding-top: 15px;
+    display: grid;
+    // Otomatik olarak 200px genişliğinde sütunlar oluştur
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 15px;
+
+    h4 {
+        grid-column: 1 / -1; 
+        margin-top: 0;
+        font-size: 1em;
+        color: #7f8c8d;
+    }
+
+    .filter-group {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        input[type="date"],
+        input[type="text"],
+        select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    }
+}
+
+// Sonuçlar Tablosu (Screen S2)
+#flight-results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+
+    th, td {
+        border: 1px solid #ecf0f1;
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+        color: #333;
+    }
+
+    // Seçilebilir satır efekti
+    tbody tr {
+        cursor: pointer;
+        &:hover {
+            background-color: #eaf2f8; 
+        }
+        &.selected {
+            background-color: #d6e9f9; 
+            font-weight: 500;
+        }
+    }
+}
+
+// Bağlam Alanı (Context Footer)
+#context-area {
+    max-width: 1200px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #34495e; 
+    color: white;
+    border-radius: 8px;
+
+    #open-roster-btn {
+        background-color: #2ecc71; 
+        &:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+    }
+    
+    #selected-flight-context {
+        font-weight: bold;
+    }
+}
+
+/* --- SCREEN S2: FLIGHT SEARCH STYLES END --- */
+
+/* --- SCREEN S3: ROSTER BUILDER STYLES START --- */
+
+.roster-page {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header-context {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h2 { margin: 0; }
+}
+
+.roster-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr; // Sidebar ve Content
+    gap: 20px;
+    margin-top: 20px;
+}
+
+// A: Validation Sidebar
+#validation-sidebar {
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 8px;
+    h3 {
+        color: $primary-color;
+        margin-top: 0;
+        border-bottom: 2px solid $primary-color;
+        padding-bottom: 5px;
+    }
+    .status-ok { color: #27ae60; font-weight: bold; } // Green
+    .status-warning { color: #f39c12; } // Amber
+    .status-error { color: $error-color; font-weight: bold; } // Red
+    p { margin: 8px 0; padding-left: 10px; border-left: 3px solid #ccc; }
+}
+
+// B: Roster Content
+#generate-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#roster-summary {
+    h3 { border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+    h4 { 
+        margin-top: 20px;
+        color: #34495e; 
+        span { color: $primary-color; font-size: 1.2em; margin-left: 5px; }
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        li {
+            padding: 5px 0;
+            border-bottom: 1px dotted #eee;
+        }
+    }
+}
+
+// Footer Actions (Ekran S3'ün en altındaki butonlar)
+#roster-actions-footer {
+    // S2'deki .footer-bar stilini yeniden kullanıyoruz.
+    padding: 15px 50px;
+    justify-content: space-around;
+    button {
+        padding: 12px 25px;
+        font-weight: bold;
+    }
+    #seat-assignment-btn { background-color: $primary-color; } // Theme color
+    #save-export-btn { background-color: #27ae60; } // Green
+    #discard-draft-btn { background-color: #e74c3c; } // Red
+}
+
+/* --- SCREEN S3: ROSTER BUILDER STYLES END --- */
+
+/* --- SCREEN S4: SEAT ASSIGNMENT STYLES START --- */
+
+.seat-assignment-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr; /* Harita geniş, Yolcu listesi dar */
+    gap: 20px;
+    margin-top: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+#seat-map-area {
+    min-height: 500px;
+    
+    #seat-map-controls {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        align-items: center;
+        
+        #capacity-status {
+            margin-left: auto;
+            font-weight: bold;
+            color: #34495e;
+        }
+    }
+}
+
+// Koltuk Görselleştirmesi
+#plane-view-canvas {
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    text-align: center;
+    min-height: 400px;
+}
+
+.seat-grid-layout {
+    display: grid;
+    /* Örnek layout: 6 sütun (A B C [Koridor] D E F) */
+    grid-template-columns: repeat(3, 1fr) 0.5fr repeat(3, 1fr); 
+    gap: 5px 10px;
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    background: #fff;
+}
+
+.seat-item {
+    padding: 5px;
+    background-color: $primary-color; /* Theme - Boş Koltuk */
+    color: white;
+    font-size: 0.8em;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s;
+    user-select: none;
+
+    &.occupied {
+        background-color: #2ecc71; /* Yeşil - Dolu Koltuk */
+        cursor: default;
+    }
+    &.premium {
+        background-color: #e67e22; /* Turuncu - Premium Koltuk */
+    }
+    &.selected-swap {
+        border: 3px solid #e74c3c; /* Kırmızı - Swap için seçili */
+    }
+    &.aisle {
+        /* Koridor koltukları (varsa) veya boşluk */
+        background: transparent;
+        cursor: default;
+        padding: 0;
+    }
+}
+
+
+// B: Atanmamış Yolcular
+#unassigned-drawer {
+    overflow-y: auto;
+    max-height: 500px; 
+    
+    h3 { 
+        border-bottom: 1px solid #ccc; 
+        padding-bottom: 5px;
+        span { color: #e67e22; } 
+    }
+    
+    #unassigned-list {
+        list-style: none;
+        padding: 0;
+        
+        li {
+            background-color: #ecf0f1;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            cursor: grab; 
+            border-left: 5px solid #34495e;
+            
+            &[data-class="First"] { border-left-color: #e74c3c; }
+            &[data-class="Business"] { border-left-color: #f1c40f; }
+        }
+    }
+}
+
+/* Footer Actions */
+#assignment-actions-footer {
+    .footer-bar {
+        padding: 15px 50px;
+        justify-content: center;
+        gap: 30px;
+    }
+}
+
+/* --- SCREEN S4: SEAT ASSIGNMENT STYLES END --- */
+
+/* --- SCREEN S5: EXTENDED ROSTER STYLES START --- */
+
+.s5-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr; /* Editör geniş, Onay dar */
+    gap: 20px;
+    margin-top: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+#crew-editor-area {
+    h4 {
+        margin-top: 20px;
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 5px;
+        color: #34495e;
+    }
+}
+
+#crew-editor-controls {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Tablo Stilleri (Tüm sayfalar için kullandığınız stil olmalı) */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    
+    /* Action butonu */
+    .action-btn {
+        padding: 5px 10px;
+        background-color: #e74c3c; /* Kırmızı - Silme */
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+}
+
+/* Approval Aside Stilleri */
+.validation-aside {
+    padding: 20px;
+    
+    #s5-rule-checklist {
+        min-height: 200px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
+
+    .approval-box {
+        border-top: 2px dashed #bdc3c7;
+        padding-top: 15px;
+        text-align: center;
+        
+        #approval-message {
+            font-weight: bold;
+            margin: 10px 0;
+            color: #2c3e50;
+        }
+    }
+    
+    .approve-btn {
+        background-color: #2ecc71; /* Yeşil - Onay */
+        color: white;
+        padding: 10px 20px;
+        font-size: 1.1em;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        
+        &:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+    }
+
+    .note {
+        font-size: 0.8em;
+        color: #7f8c8d;
+        margin-top: 5px;
+    }
+}
+
+/* --- SCREEN S5: EXTENDED ROSTER STYLES END --- */
+
+/* --- SCREEN S6: FINAL MANIFEST STYLES START --- */
+
+.s6-container {
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+#manifest-summary {
+    margin-bottom: 20px;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    
+    strong {
+        color: #2c3e50;
+    }
+}
+
+.crew-header {
+    margin-top: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #ccc;
+    color: #16a085; /* Yeşilimsi ton */
+}
+
+.crew-manifest-list {
+    list-style: disc;
+    margin-left: 25px;
+    padding: 5px 0;
+}
+
+#passenger-manifest {
+    margin-top: 20px;
+    
+    .manifest-controls {
+        margin-bottom: 15px;
+        display: flex;
+        gap: 10px;
+    }
+    
+    .data-table th:first-child, .data-table td:first-child {
+        width: 10%; /* Koltuk numarası sütununu dar tut */
+        font-weight: bold;
+    }
+}
+
+/* --- SCREEN S6: FINAL MANIFEST STYLES END --- */

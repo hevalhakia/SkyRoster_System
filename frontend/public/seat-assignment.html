@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>SkyRoster AI – Seat Assignment (S4)</title>
+    <style>
+        /* Seat Grid Layout */
+        .seat-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+            padding: 20px;
+            max-width: 600px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .seat-item {
+            padding: 12px;
+            background: #fff;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        
+        .seat-item:hover {
+            background: #e8f4f8;
+            border-color: #006400;
+        }
+        
+        .seat-item.assigned {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        
+        .seat-item.crew {
+            background: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Flight Roster System</h1>
+    </header>
+    
+    <main class="roster-page">
+        <h2>Seat Map & Assignment (Screen S4)</h2>
+
+        <div id="flight-context-header" class="card header-context">
+             <p id="context-info">Flight: --- • Aircraft: --- • Roster Status: Draft</p>
+             <button onclick="window.location.href='roster-builder.html'">Back to Roster Dashboard</button>
+        </div>
+
+        <div class="seat-assignment-container">
+            
+            <section id="seat-map-area" class="card">
+                <h3>Plane View</h3>
+                <div id="seat-map-controls">
+                    <button id="auto-assign-btn">Auto-Assign Seats (UC04)</button>
+                    <button id="swap-seats-btn" disabled style="display: none;">Swap Seats</button>
+                    <span id="capacity-status">Capacity: 0/0</span>
+                </div>
+                
+                <div id="plane-view-canvas">
+                    <p>Seat Map will be rendered here based on Aircraft Type.</p>
+                    <div id="seat-grid" class="seat-grid-layout">
+                        </div>
+                </div>
+            </section>
+
+            <aside id="unassigned-drawer" class="card">
+                <h3>Unassigned Passengers (<span id="unassigned-count">0</span>)</h3>
+                <p id="capacity-status" style="text-align: center; font-weight: bold; color: #006400;">Seats Filled: 0/0</p>
+                <ul id="unassigned-list">
+                    </ul>
+            </aside>
+            
+        </div>
+
+    </main>
+    
+    <footer id="assignment-actions-footer" class="footer-bar">
+        <button id="save-assignment-btn" disabled>Save Seat Assignments (Go to S3)</button>
+    </footer>
+
+    <footer>
+        <p>Copyright © 2025</p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>

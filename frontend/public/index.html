@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>SkyRoster AI – Flight Roster System</title> 
+</head>
+<body>
+    <header>
+        <h1>Flight Roster System</h1>
+    </header>
+    <main>
+        <h2>Sign In (Authenticate)</h2>
+        <form id="login-form">
+            <div>
+                <label for="username">Email / Username:</label>
+                <input type="text" id="username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+            </div>
+            <div id="error-message" class="error-status" style="display:none;"></div> 
+            <button type="submit">Sign In</button>
+        </form>
+
+        <div id="flight-list" style="display:none;"> 
+            <h2>Flight List / Search (S2)</h2>
+        </div>
+    </main>
+    <footer>
+        <p>Copyright © 2025</p>
+    </footer>
+    <script src="main.js"></script>
+    <script>
+        // Login form handler - doğrudan index.html'de
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Page loaded: index.html');
+            
+            const loginForm = document.getElementById('login-form');
+            const errorDiv = document.getElementById('error-message');
+            
+            if (loginForm) {
+                loginForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    const username = document.getElementById('username').value.trim();
+                    const password = document.getElementById('password').value.trim();
+                    
+                    console.log('Form submitted:', { username, password });
+                    
+                    if (!username || !password) {
+                        if (errorDiv) errorDiv.textContent = 'Kullanıcı adı ve şifre gerekli';
+                        return;
+                    }
+                    
+                    try {
+                        const response = await fetch('http://localhost:3000/auth/login', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ username, password })
+                        });
+                        
+                        console.log('Response status:', response.status);
+                        
+                        if (response.ok) {
+                            const data = await response.json();
+                            console.log('Login successful!', data);
+                            
+                            // Token ve role kaydet
+                            localStorage.setItem('jwtToken', data.token);
+                            localStorage.setItem('userRole', data.user.role);
+                            
+                            console.log('Token saved:', data.token);
+                            console.log('Redirecting to flight-search.html');
+                            
+                            // Redirect
+                            window.location.href = '/flight-search.html';
+                        } else {
+                            const error = await response.json();
+                            console.log('Login failed:', error);
+                            if (errorDiv) errorDiv.textContent = error.error || 'Giriş başarısız';
+                        }
+                    } catch (err) {
+                        console.error('Network error:', err);
+                        if (errorDiv) errorDiv.textContent = 'Bağlantı hatası: ' + err.message;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

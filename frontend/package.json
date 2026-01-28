@@ -1,0 +1,36 @@
+{
+  "name": "skyroster-frontend",
+  "version": "1.0.0",
+  "description": "SkyRoster Flight Crew Roster System - Frontend",
+  "main": "public/index.html",
+  "scripts": {
+    "test": "jest --passWithNoTests",
+    "test:e2e": "playwright test",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:coverage:report": "jest --coverage && open coverage/lcov-report/index.html",
+    "test:verbose": "jest --verbose",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "lint": "echo 'Lint configured'",
+    "build": "echo 'Build configured'"
+  },
+  "keywords": [
+    "SkyRoster",
+    "flight",
+    "roster",
+    "crew",
+    "management"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.0.0",
+    "babel-jest": "^29.0.0",
+    "@babel/preset-env": "^7.20.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-junit": "^16.0.0",
+    "dotenv": "^16.0.0"
+  }
+}

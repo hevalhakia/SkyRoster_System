@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>SkyRoster AI – Flight Search</title>
+    </head>
+<body>
+    <!-- Check if user is logged in. If running on localhost, try a one-time test auto-login (development convenience). -->
+    <script>
+        (async function ensureLogin() {
+            try {
+                if (localStorage.getItem('jwtToken')) return; // already logged in
+
+                // Only attempt auto-login on localhost for dev convenience
+                const host = location.hostname;
+                if (host !== 'localhost' && host !== '127.0.0.1') {
+                    console.warn('No JWT token found — redirecting to login');
+                    window.location.href = '/';
+                    return;
+                }
+
+                console.log('No JWT token: attempting auto-login (development)');
+                const resp = await fetch('http://127.0.0.1:3000/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: 'admin', password: 'admin123' })
+                });
+
+                if (!resp.ok) {
+                    console.warn('Auto-login failed, redirecting to login page');
+                    window.location.href = '/';
+                    return;
+                }
+
+                const data = await resp.json();
+                if (data && data.token) {
+                    localStorage.setItem('jwtToken', data.token);
+                    localStorage.setItem('userRole', (data.user && data.user.role) || 'Admin');
+                    console.log('Auto-login succeeded, continuing to flight-search');
+                    // allow page to continue loading
+                    return;
+                } else {
+                    console.warn('Auto-login returned no token; redirecting to login');
+                    window.location.href = '/';
+                    return;
+                }
+            } catch (e) {
+                console.error('Auto-login error', e);
+                window.location.href = '/';
+            }
+        })();
+    </script>
+    
+    <header>
+        <h1>Flight Roster System</h1>
+    </header>
+    
+    <main>
+        <h2>Flight Search & Selection (Screen S2)</h2>
+
+        <section id="search-area" class="card">
+            <h3>Search Flights</h3>
+            <form id="flight-search-form">
+                
+                <div class="search-bar-main">
+                    <input type="text" id="flight-number-input" placeholder="Enter Flight No or partial match (e.g., AA1243)">
+                    <button type="submit" id="search-flights-btn">Search Flights</button>
+                </div>
+                
+                <div class="filter-panel">
+                    <h4>Filter Panel</h4>
+                    <div class="filter-group">
+                        <label for="date-filter">Date/Time (Range):</label>
+                        <input type="date" id="date-filter">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="origin-filter">Origin:</label>
+                        <input type="text" id="origin-filter" placeholder="City/Airport Code">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="destination-filter">Destination:</label>
+                        <input type="text" id="destination-filter" placeholder="City/Airport Code">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="aircraft-type-filter">Aircraft Type:</label>
+                        <select id="aircraft-type-filter">
+                            <option value="">All Types (Optional)</option>
+                            <option value="Boeing 737">Boeing 737</option>
+                            <option value="Airbus A320">Airbus A320</option>
+                            <option value="Airbus A321">Airbus A321</option>
+                            <option value="Airbus A330">Airbus A330</option>
+                            <option value="Boeing 777">Boeing 777</option>
+                            <option value="Boeing 787">Boeing 787</option>
+                            </select>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section id="results-area" class="card">
+            <h3>Search Results</h3>
+            <p id="loading-message" style="display:none;">Loading flights (p95 ≤ 2s)...</p>
+            <table id="flight-results-table">
+                <thead>
+                    <tr>
+                        <th>Flight No</th>
+                        <th>Date/Time</th>
+                        <th>Duration</th>
+                        <th>Distance (Km)</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Aircraft</th>
+                        <th>Shared Flight</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+            <p id="no-results-message" style="display:none;">No flights found; adjust filters.</p>
+        </section>
+
+        <section id="context-area" class="footer-bar">
+            <p id="selected-flight-context">Selected: None</p> 
+            <button id="open-roster-btn" disabled>Open Roster (S3)</button>
+        </section>
+
+    </main>
+    
+    <footer>
+        <p>Copyright © 2025</p>
+    </footer>
+    <script src="main.js"></script> 
+</body>
+</html>

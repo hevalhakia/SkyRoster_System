@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>SkyRoster AI – Roster Builder</title>
+</head>
+<body>
+    <header>
+        <h1>Flight Roster System</h1>
+        <a href="flight-search.html" style="position: absolute; top: 15px; right: 15px; text-decoration: none; color: white; background: #006400; padding: 8px 15px; border-radius: 5px; font-size: 14px;">← Back to Flight Search (S2)</a>
+    </header>
+    
+    <main class="roster-page">
+        <div id="flight-context-header" class="card header-context">
+            <h2>Roster Builder & Validation Dashboard (S3)</h2>
+            <p id="context-info">Flight: --- • Aircraft: --- • Date: ---</p>
+        </div>
+
+        <div class="roster-container">
+            
+            <aside id="validation-sidebar">
+                <h3>Validation Status</h3>
+                <div id="rule-checklist">
+                    <p class="status-ok">Pilot Composition (DR-01)</p>
+                    <p class="status-warning">Cabin Composition (DR-03)</p>
+                    <p class="status-error">Vehicle/Distance Limits (DR-02)</p>
+                    <p class="status-ok">Capacity & Seats (DR-04)</p>
+                </div>
+            </aside>
+
+            <section id="roster-content">
+                
+                <div id="generate-panel" class="card">
+                    <button id="generate-roster-btn">Generate Roster (Auto Merge)</button>
+                    <p id="last-generation-status">Last Draft: None</p>
+                </div>
+
+                <div id="roster-summary" class="card">
+                    <h3>Roster Summary (Draft)</h3>
+                    
+                    <div id="crew-lists">
+                        <h4>Flight Crew (Pilots) <span id="pilot-count">0</span></h4>
+                        <ul id="flight-crew-list"></ul>
+                        
+                        <h4>Cabin Crew (Attendants) <span id="cabin-count">0</span></h4>
+                        <ul id="cabin-crew-list"></ul>
+                        
+                        <h4>Passengers <span id="passenger-count">0</span></h4>
+                        <ul id="passenger-list"></ul>
+                    </div>
+
+                    <div id="roster-warnings">
+                        </div>
+                </div>
+                
+            </section>
+
+        </div>
+
+    </main>
+    
+    <footer id="roster-actions-footer" class="footer-bar">
+        <button id="edit-crew-btn" disabled>Edit Crew & Approve (S5)</button>
+        <button id="seat-assignment-btn" disabled>Seat Assignment (S4)</button>
+        <button id="save-export-btn" disabled>Save / Export (JSON)</button>
+        <button id="discard-draft-btn">Discard Draft</button>
+    </footer>
+
+    <footer>
+        <p>Copyright © 2025</p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>

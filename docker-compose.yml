@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: skyroster-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: new_schemaSkyroster_db
+      MYSQL_USER: apiuser
+      MYSQL_PASSWORD: apipassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/schema_skyroster.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./database/seed_data.sql:/docker-entrypoint-initdb.d/02-seed.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootpassword"]
+      timeout: 20s
+      retries: 10
+      interval: 10s
+    networks:
+      - skyroster-network
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: skyroster-backend
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: apiuser
+      DB_PASSWORD: apipassword
+      DB_NAME: new_schemaSkyroster_db
+      DB_DIALECT: mysql
+      NODE_ENV: development
+      BACKEND_PORT: 3000
+      JWT_SECRET: your-super-secret-jwt-key
+    ports:
+      - "3000:3000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app/backend
+      - ./frontend:/app/frontend
+    networks:
+      - skyroster-network
+    command: node backend/index.js
+
+  frontend:
+    image: node:18-alpine
+    container_name: skyroster-frontend-server
+    working_dir: /app/frontend
+    ports:
+      - "5501:5501"
+    volumes:
+      - ./frontend:/app/frontend
+    networks:
+      - skyroster-network
+    command: |
+      sh -c "npm install && npx http-server . -p 5501 -c-1"
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  skyroster-network:
+    driver: bridge

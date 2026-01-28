@@ -1,0 +1,37 @@
+{
+  "name": "flight-roster-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --passWithNoTests",
+    "test:unit": "jest backend/tests/unit frontend/tests/unit --passWithNoTests",
+    "test:integration": "jest backend/tests/integration --passWithNoTests",
+    "test:performance": "jest backend/tests/performance --testTimeout=30000 --passWithNoTests",
+    "test:coverage": "jest --coverage --passWithNoTests",
+    "test:coverage:strict": "jest --coverage && node -e \"const fs=require('fs'); const summary=JSON.parse(fs.readFileSync('./coverage/coverage-summary.json','utf8')); if(summary.total.lines.pct < 70) { console.error('❌ Coverage below 70%'); process.exit(1); } else { console.log('✅ Coverage OK: ' + summary.total.lines.pct + '%'); }\"",
+    "test:e2e": "playwright test",
+    "test:e2e:debug": "playwright test --debug",
+    "test:e2e:headed": "playwright test --headed",
+    "test:smoke": "jest backend/tests/integration/smoke.test.js --testTimeout=30000",
+    "test:security": "jest backend/tests/integration/auth.security.test.js --testTimeout=30000",
+    "test:all": "npm run test:unit && npm run test:integration && npm run test:performance && npm run test:e2e && npm run test:coverage:strict",
+    "test:watch": "jest --watch",
+    "test:verbose": "jest --verbose",
+    "sass": "sass frontend/src/styles/main.scss frontend/public/styles/main.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "@babel/preset-react": "^7.23.0",
+    "babel-jest": "^29.0.0",
+    "sass": "^1.93.3",
+    "jest": "^29.0.0",
+    "cypress": "^13.0.0"
+  }
+}
+

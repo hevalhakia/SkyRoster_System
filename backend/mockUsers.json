@@ -1,0 +1,204 @@
+{
+  "users": [
+    {
+      "user_id": 1,
+      "username": "admin",
+      "password": "admin123",
+      "first_name": "Kemal",
+      "last_name": "Yılmaz",
+      "email": "kemal.yilmaz@skyroster.com",
+      "role": "Admin",
+      "active": true
+    },
+    {
+      "user_id": 2,
+      "username": "admin2",
+      "password": "admin456",
+      "first_name": "Selin",
+      "last_name": "Çelik",
+      "email": "selin.celik@skyroster.com",
+      "role": "Admin",
+      "active": true
+    },
+    {
+      "user_id": 3,
+      "username": "admin3",
+      "password": "admin789",
+      "first_name": "Berat",
+      "last_name": "Kaya",
+      "email": "berat.kaya@skyroster.com",
+      "role": "Admin",
+      "active": true
+    },
+    {
+      "user_id": 4,
+      "username": "admin4",
+      "password": "admin321",
+      "first_name": "Merve",
+      "last_name": "Demir",
+      "email": "merve.demir@skyroster.com",
+      "role": "Admin",
+      "active": true
+    },
+    {
+      "user_id": 5,
+      "username": "admin5",
+      "password": "admin654",
+      "first_name": "Emre",
+      "last_name": "Şahin",
+      "email": "emre.sahin@skyroster.com",
+      "role": "Admin",
+      "active": true
+    },
+    {
+      "user_id": 6,
+      "username": "manager",
+      "password": "manager123",
+      "first_name": "Ahmet",
+      "last_name": "Özcan",
+      "email": "ahmet.ozcan@skyroster.com",
+      "role": "CrewManager",
+      "active": true
+    },
+    {
+      "user_id": 7,
+      "username": "manager2",
+      "password": "manager456",
+      "first_name": "Fatma",
+      "last_name": "Kılıç",
+      "email": "fatma.kilic@skyroster.com",
+      "role": "CrewManager",
+      "active": true
+    },
+    {
+      "user_id": 8,
+      "username": "manager3",
+      "password": "manager789",
+      "first_name": "İbrahim",
+      "last_name": "Güçlü",
+      "email": "ibrahim.guclu@skyroster.com",
+      "role": "CrewManager",
+      "active": true
+    },
+    {
+      "user_id": 9,
+      "username": "manager4",
+      "password": "manager321",
+      "first_name": "Ayşe",
+      "last_name": "Yıldız",
+      "email": "ayse.yildiz@skyroster.com",
+      "role": "CrewManager",
+      "active": true
+    },
+    {
+      "user_id": 10,
+      "username": "manager5",
+      "password": "manager654",
+      "first_name": "Can",
+      "last_name": "Polat",
+      "email": "can.polat@skyroster.com",
+      "role": "CrewManager",
+      "active": true
+    },
+    {
+      "user_id": 11,
+      "username": "pilot1",
+      "password": "pilot123",
+      "first_name": "Mehmet",
+      "last_name": "Akgün",
+      "email": "mehmet.akgun@skyroster.com",
+      "role": "Pilot",
+      "active": true
+    },
+    {
+      "user_id": 12,
+      "username": "pilot2",
+      "password": "pilot456",
+      "first_name": "Deniz",
+      "last_name": "Erdoğan",
+      "email": "deniz.erdogan@skyroster.com",
+      "role": "Pilot",
+      "active": true
+    },
+    {
+      "user_id": 13,
+      "username": "pilot3",
+      "password": "pilot789",
+      "first_name": "Ali",
+      "last_name": "Çiftçi",
+      "email": "ali.ciftci@skyroster.com",
+      "role": "Pilot",
+      "active": true
+    },
+    {
+      "user_id": 14,
+      "username": "pilot4",
+      "password": "pilot321",
+      "first_name": "Mustafa",
+      "last_name": "Koç",
+      "email": "mustafa.koc@skyroster.com",
+      "role": "Pilot",
+      "active": true
+    },
+    {
+      "user_id": 15,
+      "username": "pilot5",
+      "password": "pilot654",
+      "first_name": "Serhan",
+      "last_name": "Uysal",
+      "email": "serhan.uysal@skyroster.com",
+      "role": "Pilot",
+      "active": true
+    },
+    {
+      "user_id": 16,
+      "username": "crew1",
+      "password": "crew123",
+      "first_name": "Zeynep",
+      "last_name": "Mutlu",
+      "email": "zeynep.mutlu@skyroster.com",
+      "role": "Cabin",
+      "active": true
+    },
+    {
+      "user_id": 17,
+      "username": "crew2",
+      "password": "crew456",
+      "first_name": "Hanife",
+      "last_name": "Aydın",
+      "email": "hanife.aydin@skyroster.com",
+      "role": "Cabin",
+      "active": true
+    },
+    {
+      "user_id": 18,
+      "username": "crew3",
+      "password": "crew789",
+      "first_name": "Gözde",
+      "last_name": "Yalçın",
+      "email": "gozde.yalcin@skyroster.com",
+      "role": "Cabin",
+      "active": true
+    },
+    {
+      "user_id": 19,
+      "username": "crew4",
+      "password": "crew321",
+      "first_name": "Metin",
+      "last_name": "Karagöz",
+      "email": "metin.karagoz@skyroster.com",
+      "role": "Cabin",
+      "active": true
+    },
+    {
+      "user_id": 20,
+      "username": "crew5",
+      "password": "crew654",
+      "first_name": "Nilüfer",
+      "last_name": "Aslan",
+      "email": "nilufer.aslan@skyroster.com",
+      "role": "Cabin",
+      "active": true
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+*.log
+
+# Build outputs
+dist/
+build/
+
+# Database
+*.sql
+!database/schema_skyroster.sql
+!database/seed_data.sql
+
+# OS
+.DS_Store
+.env.production.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Postman
+.postman/
+
+# Frontend
+frontend/node_modules/
+frontend/.sass-cache/
+
+# Backend
+backend/node_modules/
+backend/server-log.txt
